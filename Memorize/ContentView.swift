@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojis = ["🚗", "⛵️", "🚜", "🚲", "🚕", "🚌", "🚁", "🛶", "🛸", "🚒", "🚖", "🛴"]
-    @State var emojiCount = 12
+    @State var emojis = ["🚗", "🚕", "🚙", "🏎", "🚑", "🚒", "🚚", "🚓"]
+   
     
     var body: some View {
         VStack{
+            Text("Memorize!")
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]){
-                    ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
+                    ForEach(emojis[0..<emojis.count], id: \.self) { emoji in
                         CardView(content: emoji)
                             .aspectRatio(2/3, contentMode: .fit)
                     }
@@ -24,40 +25,56 @@ struct ContentView: View {
             .foregroundColor(.red)
             Spacer()
             HStack{
-                remove
+                cars
                 Spacer()
-                add
+                planes
+                Spacer()
+                boats
             }
-            .font(.largeTitle)
+            .font(.footnote)
             .padding(.horizontal)
         }
         .padding(.horizontal)
         
     }
     
-    var remove: some View {
+    var cars: some View {
         Button {
-            if emojiCount > 1{
-                emojiCount -= 1
-            }
+           emojis = ["🚗", "🚕", "🚙", "🏎", "🚑", "🚒", "🚚", "🚓"]
+            emojis.shuffle()
         } label: {
             VStack {
-                Image(systemName:"minus.circle")
+                Text("Cars")
+                Image(systemName:"car")
             }
         }
     }
     
-    var add: some View{
+    var planes: some View {
         Button {
-            if emojiCount < emojis.count {
-                emojiCount += 1
-            }
+            emojis = ["✈️", "🛫", "🚀", "🛸", "🚁", "🛰", "🚝", "🚟"]
+            emojis.shuffle()
         } label: {
             VStack {
-                Image(systemName:"plus.circle")
+                Text("Planes")
+                Image(systemName:"airplane")
             }
         }
     }
+    
+    var boats: some View {
+        Button {
+            emojis = ["⛵️", "🚤", "🛥", "🛳", "⛴", "🚢", "🛟", "🪝"]
+            emojis.shuffle()
+        } label: {
+            VStack {
+                Text("Boats")
+                Image(systemName:"sailboat")
+            }
+        }
+    }
+    
+    
 }
 
 struct CardView: View {
