@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            Text("Memorize!")
+//            Text("Memorize!")
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]){
                     ForEach(emojis[0..<emojis.count], id: \.self) { emoji in
@@ -23,16 +23,16 @@ struct ContentView: View {
                 }
             }
             .foregroundColor(.red)
-            Spacer()
-            HStack{
-                cars
-                Spacer()
-                planes
-                Spacer()
-                boats
-            }
-            .font(.footnote)
-            .padding(.horizontal)
+//            Spacer()
+//            HStack{
+//                cars
+//                Spacer()
+//                planes
+//                Spacer()
+//                boats
+//            }
+//            .font(.footnote)
+//            .padding(.horizontal)
         }
         .padding(.horizontal)
         
